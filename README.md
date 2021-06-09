@@ -1,11 +1,8 @@
-## My Project
+## AWS App Runner Developer Guide
 
-TODO: Fill this README out!
+The open source version of the AWS App Runner Developer Guide. You can submit feedback and requests for changes by submitting issues in this repo or by making proposed changes and submitting a pull request.
 
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
+The starting page of this guide is [What Is AWS App Runner?](https://github.com/awsdocs/aws-app-runner-developer-guide/blob/main/doc_source/what-is-apprunner.md).
 
 ## Security
 
