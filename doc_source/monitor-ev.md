@@ -24,7 +24,7 @@ These are some examples to events that App Runner sends to EventBridge\.
   { 
     "version": "0",
     "id": "6a7e8feb-b491-4cf7-a9f1-bf3703467718",
-    "detail-type": "Service Status Change",
+    "detail-type": "AppRunner Service Status Change",
     "source": "aws.apprunner",
     "account": "111122223333",
     "time": "2021-04-29T11:54:23Z",
@@ -48,7 +48,7 @@ These are some examples to events that App Runner sends to EventBridge\.
   { 
     "version": "0",
     "id": "6a7e8feb-b491-4cf7-a9f1-bf3703467718",
-    "detail-type": "Service Operation Status Change",
+    "detail-type": "AppRunner Service Operation Status Change",
     "source": "aws.apprunner",
     "account": "111122223333",
     "time": "2021-04-29T18:43:48Z",
@@ -73,7 +73,7 @@ The following examples demonstrate event patterns that you can use in EventBridg
 
   ```
   { 
-    "detail-type": [ "Service Status Change" ],
+    "detail-type": [ "AppRunner Service Status Change" ],
     "source": [ "aws.apprunner" ],
     "account": [ "111122223333" ],
     "detail": {
@@ -85,7 +85,7 @@ The following examples demonstrate event patterns that you can use in EventBridg
 
   ```
   { 
-    "detail-type": [ "Service Operation Status Change" ],
+    "detail-type": [ "AppRunner Service Operation Status Change" ],
     "source": [ "aws.apprunner" ],
     "account": [ "111122223333" ],
     "detail": {
@@ -105,7 +105,7 @@ The following examples demonstrate event patterns that you can use in EventBridg
 
 ### Service status change<a name="monitor-ev.ref.service"></a>
 
-A service status change event has `detail-type` set to `Service Status Change`\. It has the following detail fields and values:
+A service status change event has `detail-type` set to `AppRunner Service Status Change`\. It has the following detail fields and values:
 
 ```
 "PreviousStatus": "any valid service status",
@@ -118,7 +118,7 @@ A service status change event has `detail-type` set to `Service Status Change`\.
 
 ### Operation status change<a name="monitor-ev.ref.operation"></a>
 
-An operation status change event has `detail-type` set to `Service Operation Status Change`\. It has the following detail fields and values:
+An operation status change event has `detail-type` set to `AppRunner Service Operation Status Change`\. It has the following detail fields and values:
 
 ```
 "Status": "see following table",

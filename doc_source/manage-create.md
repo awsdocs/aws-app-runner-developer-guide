@@ -85,7 +85,8 @@ All other service settings are either optional or have console\-provided default
 
 1. On the **Review and create** page, verify all the details you've entered, and then choose **Create and deploy**\.
 
-   Result: If service creation succeeds, the console should show the service dashboard, with a **Service overview** of the new service\.
+   Result: If service creation succeeds, the console should show the service dashboard, with a **Service overview** of the new service\.  
+![\[App Runner service dashboard page\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/getting-started-create-dashboard.png)
 
 1. Verify that your service is running\.
 
@@ -112,6 +113,8 @@ An access role isn't required if your image is stored in Amazon ECR Public, wher
 
 During service creation, App Runner launches a service that runs a container instance of the image you provide\. There is no build phase in this case\.
 
+For more information, see [App Runner service based on a source image](service-source-image.md)\.
+
 **Topics**
 + [Creating a service from an image using the App Runner console](#manage-create.create.ecr.console)
 + [Creating a service from an image using the App Runner API or AWS CLI](#manage-create.create.ecr.api)
@@ -133,7 +136,7 @@ During service creation, App Runner launches a service that runs a container ins
    1. On the **Source and deployment** page, in the **Source** section, for **Repository type**, choose **Container registry**\.
 
    1. For **Provider**, choose the provider where your image is stored:
-      + **Amazon ECR** – A private image stored in Amazon ECR in your AWS account\.
+      + **Amazon ECR** – A private image stored in Amazon ECR\.
       + **Amazon ECR Public** – A publicly readable image stored in Amazon ECR Public\.
 
    1. For **Container image URI**, choose **Browse**\.
@@ -146,10 +149,10 @@ During service creation, App Runner launches a service that runs a container ins
 1. Configure your deployments\.
 
    1. In the **Deployment settings** section, choose **Manual** or **Automatic**\.
+**Note**  
+App Runner doesn't support automatic deployment for Amazon ECR Public images, and for images in an Amazon ECR repository that belongs to a different AWS account than the one that your service is in\.
 
       For more information about deployment methods, see [Deployment methods](manage-deploy.md#manage-deploy.methods)\.
-**Note**  
-App Runner doesn't support automatic deployment for Amazon ECR Public images\.
 
    1. \[**Amazon ECR** provider\] For **ECR access role**, choose an existing service role in your account or choose to create a new role\. If you're using manual deployment, you can also choose to use the IAM user role at the time of deployment\.
 
@@ -169,7 +172,8 @@ All other service settings are either optional or have console\-provided default
 
 1. On the **Review and create** page, verify all the details that you entered, and then choose **Create and deploy**\.
 
-   Result: If service creation succeeds, the console should show the service dashboard, with a **Service overview** of the new service\.
+   Result: If service creation succeeds, the console should show the service dashboard, with a **Service overview** of the new service\.  
+![\[App Runner service dashboard page\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/manage-create-ecr-dashboard.png)
 
 1. Verify that your service is running\.
 

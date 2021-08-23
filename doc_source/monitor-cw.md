@@ -23,7 +23,7 @@ App Runner collects the following metrics relating to your service and publishes
 | --- | --- | --- | 
 |  HTTP request count  |  `Requests`  |  The number of HTTP requests that the service received\.  | 
 |  HTTP status counts  |  `2xxStatusResponses` `4xxStatusResponses` `5xxStatusResponses`  |  The number of HTTP requests that returned each response status, grouped by category \(2XX, 4XX, 5XX\)\.  | 
-|  HTTP request latency  |  `RequestLatency`  |  The time it took your web service to process HTTP requests\.  | 
+|  HTTP request latency  |  `RequestLatency`  |  The time, in milliseconds, that it took your web service to process HTTP requests\.  | 
 |  Instance counts  |  `ActiveInstances`   |  The number of instances that are processing HTTP requests for your service\.   | 
 
 ## Viewing App Runner metrics in the console<a name="monitor-cw.console"></a>
@@ -39,11 +39,13 @@ At this time, the console displays only service metrics\. To view instance metri
 
 1. In the navigation pane, choose **Services**, and then choose your App Runner service\.
 
-   The console displays the service dashboard with a **Service overview**\.
+   The console displays the service dashboard with a **Service overview**\.  
+![\[App Runner service dashboard page showing Activity list\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/console-dashboard.png)
 
 1. On the service dashboard page, choose the **Metrics** tab\.
 
-   The console displays a set of metrics graphs\.   
+   The console displays a set of metrics graphs\.     
+![\[The Metrics tab on the App Runner service dashboard page\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/service-dashboad-metrics.png)
 
 1. Choose a duration \(for example, **12h**\) to scope metrics graphs to the recent period of that duration\.
 

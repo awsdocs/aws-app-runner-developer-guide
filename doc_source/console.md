@@ -34,6 +34,8 @@ You can view information about an App Runner service and manage it from the serv
 
 To get to the service dashboard, navigate to the **Services** page \(see previous section\), and then choose your App Runner service\.
 
+![\[App Runner service dashboard page\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/console-dashboard.png)
+
 The **Service overview** section provides basic details about the App Runner service and your application\. Things you can do here:
 + View service details such as status, health, and ARN\.
 + Navigate to the **Default domain**—the domain that App Runner provides for the web application running in your service\. This is a subdomain in the `awsapprunner.com` domain owned by App Runner\.

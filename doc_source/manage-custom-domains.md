@@ -36,7 +36,8 @@ App Runner internally creates certificates that track domain validity\. They're 
 
 1. In the navigation pane, choose **Services**, and then choose your App Runner service\.
 
-   The console displays the service dashboard with a **Service overview**\.
+   The console displays the service dashboard with a **Service overview**\.  
+![\[App Runner service dashboard page showing Activity list\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/console-dashboard.png)
 
 1. On the service dashboard page, choose the **Custom domains** tab\.
 
@@ -45,11 +46,18 @@ App Runner internally creates certificates that track domain validity\. They're 
 
 1. On the **Custom domains** tab, choose **Link domain**\.
 
-1. In the **Link custom domain** dialog, enter a domain name, and then choose **View DNS configuration**\.
+1. In the **Link custom domain** dialog, enter a domain name, and then choose **Link custom domain**\.
 
-1. Follow the instructions on the **Configure DNS** page to start the domain validation process\.
+1. Follow the instructions on the **Configure DNS** page to start the domain validation process\.  
+![\[The Configure DNS page, showing certificate validation and DNS target records to add to customer's DNS\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/custom-domain-configure.png)
 
-1. When the domain status changes to **Active**, verify that the domain works for routing traffic by browsing to it\.
+1. Choose **Close**
+
+   The console shows the dashboard again\. The **Custom domains** tab has a new tile showing the domain you just linked in the **Pending certificate DNS validation** status\.  
+![\[The Custom domains tab on the App Runner service dashboard page, showing a custom domain tile\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/service-dashboad-domains-tile.png)
+
+1. When the domain status changes to **Active**, verify that the domain works for routing traffic by browsing to it\.  
+![\[The Custom domains tab on the App Runner service dashboard page, showing a custom domain tile\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/service-dashboad-domains-tile-active.png)
 
 **To disassociate \(unlink\) a custom domain using the App Runner console**
 

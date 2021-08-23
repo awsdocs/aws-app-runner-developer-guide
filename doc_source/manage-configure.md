@@ -2,6 +2,12 @@
 
 When you [create an AWS App Runner service](manage-create.md), you set various configuration values\. You can change some of these configuration settings after you create the service\. Other settings can be applied only while creating the service and cannot be changed thereafter\. This topic discusses the configuration of your service using the App Runner API, the App Runner console, and an App Runner configuration file\.
 
+**Topics**
++ [Configure your service using the App Runner API or AWS CLI](#manage-configure.api)
++ [Configure your service using the App Runner console](#manage-configure.console)
++ [Configure your service using an App Runner configuration file](#manage-configure.file)
++ [Configuring health checks for your service](manage-configure-healthcheck.md)
+
 ## Configure your service using the App Runner API or AWS CLI<a name="manage-configure.api"></a>
 
 The API defines which settings can be changed after service creation\. The following list discusses the relevant actions, types, and limitations\.
@@ -24,7 +30,8 @@ The console uses the App Runner API to apply configuration updates\. The update 
 
 1. In the navigation pane, choose **Services**, and then choose your App Runner service\.
 
-   The console displays the service dashboard with a **Service overview**\.
+   The console displays the service dashboard with a **Service overview**\.  
+![\[App Runner service dashboard page showing Activity list\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/console-dashboard.png)
 
 1. On the service dashboard page, choose the **Configuration** tab\.
 

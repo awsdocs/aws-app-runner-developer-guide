@@ -9,7 +9,8 @@ This topic describes ways to redeploy your application source to your App Runner
 App Runner provides the following methods for you to control how application deployments are initiated\.
 
 **Automatic deployment**  
-Use automatic deployment when you want continuous integration and deployment \(CICD\) behavior for your service\. App Runner monitors your image or code repository\. Whenever you push a new image version to your image repository, or a new commit to your code repository, App Runner automatically deploys it to your service without further action on your side\.
+Use automatic deployment when you want continuous integration and deployment \(CICD\) behavior for your service\. App Runner monitors your image or code repository\. Whenever you push a new image version to your image repository, or a new commit to your code repository, App Runner automatically deploys it to your service without further action on your side\.  
+App Runner doesn't support automatic deployment for Amazon ECR Public images, and for images in an Amazon ECR repository that belongs to a different AWS account than the one that your service is in\.
 
 **Manual deployment**  
 Use manual deployment when you want to explicitly initiate each deployment to your service\. You initiate a deployment if the repository that you configured for your service has a new version that you want to deploy\. For more information, see [Manual deployment](#manage-deploy.manual)\.
@@ -31,7 +32,8 @@ With manual deployment, you need to explicitly initiate each deployment to your 
 
 1. In the navigation pane, choose **Services**, and then choose your App Runner service\.
 
-   The console displays the service dashboard with a **Service overview**\.
+   The console displays the service dashboard with a **Service overview**\.  
+![\[App Runner service dashboard page showing Activity list\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/console-dashboard.png)
 
 1. Choose **Deploy**\.
 

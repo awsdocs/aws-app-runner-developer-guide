@@ -28,39 +28,32 @@ Before you start the tutorial, be sure to take the following actions:
 **Example requirements\.txt**  
 
 ```
-Click==7.0
-Flask==1.0.2
-itsdangerous==1.1.0
-Jinja2==2.10
-MarkupSafe==1.1.1
-Werkzeug==0.15.5
+pyramid==2.0
 ```
 
 **Example server\.py**  
 
 ```
-from flask import Flask
+from wsgiref.simple_server import make_server
+from pyramid.config import Configurator
+from pyramid.response import Response
 import os
 
-PORT = 8080
-name = os.environ['NAME']
-if name == None or len(name) == 0:
-  name = "world"
-MESSAGE = "Hello, " + name + "!"
-print("Message: '" + MESSAGE + "'")
+def hello_world(request):
+    name = os.environ.get('NAME')
+    if name == None or len(name) == 0:
+        name = "world"
+    message = "Hello, " + name + "!\n"
+    return Response(message)
 
-app = Flask(__name__)
-
-
-@app.route("/")
-def root():
-  print("Handling web request. Returning message.")
-  result = MESSAGE.encode("utf-8")
-  return result
-
-
-if __name__ == "__main__":
-  app.run(debug=True, host="0.0.0.0", port=PORT)
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT"))
+    with Configurator() as config:
+        config.add_route('hello', '/')
+        config.add_view(hello_world, route_name='hello')
+        app = config.make_wsgi_app()
+    server = make_server('0.0.0.0', port, app)
+    server.serve_forever()
 ```
 
 ## Step 1: Create an App Runner service<a name="getting-started.create"></a>
@@ -142,7 +135,8 @@ The example application reads the name you set in this environment variable and 
 
 1. On the **Review and create** page, verify all the details you've entered, and then choose **Create and deploy**\.
 
-   If the service is successfully created, the console shows the service dashboard, with a **Service overview** of the new service\.
+   If the service is successfully created, the console shows the service dashboard, with a **Service overview** of the new service\.  
+![\[App Runner service dashboard page\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/getting-started-create-dashboard.png)
 
 1. Verify that your service is running\.
 
@@ -165,7 +159,7 @@ In this step, you make a change to your source code repository\. The App Runner 
 
 1. Choose **Edit this file** \(the pencil icon\)\.
 
-1. In the expression assigned to the variable `MESSAGE`, change the text `Hello` to `Good morning`\.  
+1. In the expression assigned to the variable `message`, change the text `Hello` to `Good morning`\.  
 ![\[GitHub file page with edit icon and message highlighted\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/getting-started-deploy-edit.png)
 
 1. Choose **Commit changes**\.
@@ -188,7 +182,8 @@ In this step, you make a change to the **NAME** environment variable value, to d
 
 1. In the navigation pane, choose **Services**, and then choose your App Runner service\.
 
-   The console displays the service dashboard with a **Service overview**\.
+   The console displays the service dashboard with a **Service overview**\.  
+![\[App Runner service dashboard page showing Activity list\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/console-dashboard.png)
 
 1. On the service dashboard page, choose the **Configuration** tab\.
 
@@ -219,7 +214,8 @@ In this step, you use the App Runner console to view logs for your App Runner se
 
 1. In the navigation pane, choose **Services**, and then choose your App Runner service\.
 
-   The console displays the service dashboard with a **Service overview**\.
+   The console displays the service dashboard with a **Service overview**\.  
+![\[App Runner service dashboard page showing Activity list\]](http://docs.aws.amazon.com/apprunner/latest/dg/images/console-dashboard.png)
 
 1. On the service dashboard page, choose the **Logs** tab\.
 
