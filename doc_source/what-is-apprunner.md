@@ -22,7 +22,7 @@ You can define and configure your App Runner service deployments using any one o
 
 ## Pricing for App Runner<a name="what-is-apprunner.pricing"></a>
 
-App Runner provides a cost\-effective way to run your application\. You only pay for resources that your App Runner service consumes\. Your service scales down to fewer compute instances when request traffic is slower\. You have control over scalability settings: the lowest and highest number of provisioned instances, and the highest load an instance handles\.
+App Runner provides a cost\-effective way to run your application\. You only pay for resources that your App Runner service consumes\. Your service scales down to fewer compute instances when request traffic is lower\. You have control over scalability settings: the lowest and highest number of provisioned instances, and the highest load an instance handles\.
 
 For more information about App Runner automatic scaling, see [Managing App Runner automatic scaling](manage-autoscaling.md)\.
 

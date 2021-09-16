@@ -36,7 +36,7 @@ View details about updates to AWS managed policies for App Runner since this ser
 | Change | Description | Date | 
 | --- | --- | --- | 
 |  [AppRunnerServiceRolePolicy](security-iam-slr.md) – New policy  |  App Runner added a new policy to allow App Runner to make calls to Amazon CloudWatch Logs and Amazon CloudWatch Events on behalf of App Runner services\.  | March 1, 2021 | 
-|  [AWSAppRunnerReadOnlyAccess](security_iam_service-with-iam.md#security_iam_service-with-iam-users) – New policy  |  App Runner added a new policy to allow users to list and view details about App Runner resources\.  | March 1, 2021 | 
-|  [AWSAppRunnerFullAccess](security_iam_service-with-iam.md#security_iam_service-with-iam-users) – New policy  |  App Runner added a new policy to allow users to perform all App Runner actions\.  | March 1, 2021 | 
+|  [AWSAppRunnerReadOnlyAccess](security_iam_service-with-iam.md#security_iam_service-with-iam-users) – New policy  |  App Runner added a new policy to allow users to list and view details about App Runner resources\.  | Sep 30, 2021 | 
+|  [AWSAppRunnerFullAccess](security_iam_service-with-iam.md#security_iam_service-with-iam-users) – New policy  |  App Runner added a new policy to allow users to perform all App Runner actions\.  | Sep 30, 2021 | 
 |  [AWSAppRunnerServicePolicyForECRAccess](security_iam_service-with-iam.md#security_iam_service-with-iam-roles-service.access) – New policy  |  App Runner added a new policy to allow App Runner to access Amazon Elastic Container Registry \(Amazon ECR\) images in your account\.  | March 1, 2021 | 
 |  App Runner started tracking changes  |  App Runner started tracking changes for its AWS managed policies\.  | March 1, 2021 | 

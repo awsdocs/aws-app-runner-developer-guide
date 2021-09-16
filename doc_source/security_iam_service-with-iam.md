@@ -183,7 +183,7 @@ For examples of user policies, see [User policies](security_iam_id-based-policy-
       "Resource": "*"
     },
     {
-      "Sid": "Administrative permission over AppRunner applications",
+      "Sid": "AppRunnerAdminAccess",
       "Effect": "Allow",
       "Action": "apprunner:*",
       "Resource": "*"
