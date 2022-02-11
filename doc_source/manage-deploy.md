@@ -24,7 +24,10 @@ You can configure the deployment method for your service in the following ways:
 
 With manual deployment, you need to explicitly initiate each deployment to your service\. When you have a new version of your application image or code ready to deploy, you can refer to the following sections to learn how to perform a deployment using the console and the API\.
 
-### Deploy an application version using the App Runner console<a name="manage-deploy.manual.console"></a>
+Deploy a version of your application using one of the following methods:
+
+------
+#### [ App Runner console ]
 
 **To deploy using the App Runner console**
 
@@ -43,6 +46,9 @@ With manual deployment, you need to explicitly initiate each deployment to your 
 
 1. To verify that the deployment is successful, on the service dashboard page, choose the **Default domain** value—it's the URL to your service's website\. Inspect or interact with your web application and verify your version change\.
 
-### Deploy an application version using the App Runner API or AWS CLI<a name="manage-deploy.manual.api"></a>
+------
+#### [ App Runner API or AWS CLI ]
 
 To deploy using the App Runner API or AWS CLI, call the [StartDeployment](https://docs.aws.amazon.com/apprunner/latest/api/API_StartDeployment.html) API action\. The only parameter to pass is your service ARN\. You already configured your application source location when you created the service, and App Runner can find the new version\. Your deployment starts if the call returns a successful response\.
+
+------

@@ -6,6 +6,7 @@ When you [create an AWS App Runner service](manage-create.md), you set various c
 + [Configure your service using the App Runner API or AWS CLI](#manage-configure.api)
 + [Configure your service using the App Runner console](#manage-configure.console)
 + [Configure your service using an App Runner configuration file](#manage-configure.file)
++ [Configuring service settings using sharable resources](manage-configure-resources.md)
 + [Configuring health checks for your service](manage-configure-healthcheck.md)
 
 ## Configure your service using the App Runner API or AWS CLI<a name="manage-configure.api"></a>
@@ -14,7 +15,9 @@ The API defines which settings can be changed after service creation\. The follo
 + [UpdateService](https://docs.aws.amazon.com/apprunner/latest/api/API_UpdateService.html) action – Can be called after creation to update some configuration settings\.
   + *Can be updated* – You can update settings in the `SourceConfiguration`, `InstanceConfiguration`, and `HealthCheckConfiguration` parameters\. However, in `SourceConfiguration`, you can't switch your source type from code to image or the other way around\. You must provide the same repositoryparameter as you provided when you created the service\. It's either `CodeRepository` or `ImageRepository`\.
 
-    You can also update `AutoScalingConfigurationArn`, the ARN of the auto scaling configuration resource associated with the service\.
+    You can also update the following ARNs of separate configuration resources associated with the service:
+    + `AutoScalingConfigurationArn`
+    + `VpcConnectorArn`
   + *Cannot be updated* – You can't change the `ServiceName` and `EncryptionConfiguration` parameters that are available in the [CreateService](https://docs.aws.amazon.com/apprunner/latest/api/API_CreateService.html) action\. They can't be changed after they're created\. The [UpdateService](https://docs.aws.amazon.com/apprunner/latest/api/API_UpdateService.html) action doesn't include these parameters\.
   + *API vs\. file* – You can set the `ConfigurationSource` parameter of the [CodeConfiguration](https://docs.aws.amazon.com/apprunner/latest/api/API_CodeConfiguration.html) type \(used for source code repositories as part of `SourceConfiguration`\) to `Repository`\. In this case, App Runner ignores the configuration settings in `CodeConfigurationValues`, and reads these settings from a [configuration file](config-file.md) in your repository\. If you set `ConfigurationSource` to `API`, App Runner gets all configuration settings from the API call and ignores the configuration file, even if one exists\.
 + [TagResource](https://docs.aws.amazon.com/apprunner/latest/api/API_TagResource.html) action – Can be called after your service is created to add tags to the service or update values of existing tags\.

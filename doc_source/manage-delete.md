@@ -7,7 +7,7 @@ You might want to delete an App Runner service for one or more of the following 
 + *You've reached the App Runner service quota* – You want to create a new service in the same AWS Region and you've reached the quota associated with your account\. For more information, see [App Runner resource quotas](architecture.md#architecture.quotas)\.
 + *Security or privacy considerations* – You want App Runner to delete the data that it stores for your service\.
 
-## Pausing vs\. deleting<a name="manage-delete.pause-vs-delete"></a>
+## Pausing and deleting compared<a name="manage-delete.pause-vs-delete"></a>
 
 *Pause* your App Runner service to *temporarily* disable it\. Only compute resources are terminated, and your stored data \(for example, the container image with your application version\) remains intact\. Resuming your service is quick—your application is ready to be deployed to new compute resources\. Your App Runner domain remains the same\.
 
@@ -25,7 +25,12 @@ When you delete your service, App Runner deletes some associated items, and does
 + *Connection* – You might have a connection that's associated with your service\. An App Runner connection is a separate resource that might be shared among several App Runner services\. If you don't need the connection anymore, you can explicitly delete it\. For more information, see [Managing App Runner connections](manage-connections.md)\.
 + *Custom domain certificates* – If you link custom domains to an App Runner service, App Runner internally creates certificates that track domain validity\. They're stored in AWS Certificate Manager \(ACM\)\. App Runner doesn't delete the certificate for seven days after a domain is unlinked from your service or after the service is deleted\. For more information, see [Managing custom domain names for an App Runner service](manage-custom-domains.md)\.
 
-## Delete your service using the App Runner console<a name="manage-delete.console"></a>
+## Delete your service<a name="manage-delete.manage"></a>
+
+Delete your App Runner service using one of the following methods:
+
+------
+#### [ App Runner console ]
 
 **To delete your service using the App Runner console**
 
@@ -40,6 +45,9 @@ When you delete your service, App Runner deletes some associated items, and does
 
    The console takes you to the **Services** page\. The deleted service displays the **Operation in progress** status, and then the service disappears from the list\. Your service is now deleted\.
 
-## Delete your service using the App Runner API or AWS CLI<a name="manage-delete.api"></a>
+------
+#### [ App Runner API or AWS CLI ]
 
 To delete your service using the App Runner API or AWS CLI, call the [DeleteService](https://docs.aws.amazon.com/apprunner/latest/api/API_DeleteService.html) API action\. If the call returns a successful response with a [Service](https://docs.aws.amazon.com/apprunner/latest/api/API_Service.html) object showing `"Status": "OPERATION_IN_PROGRESS"`, App Runner starts deleting your service\.
+
+------

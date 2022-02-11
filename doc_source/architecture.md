@@ -40,17 +40,12 @@ The following table provides an overview of these resources:
 |  Service  |  Represents a running version of your application\. Much of the rest of this guide describes service types, management, configuration, and monitoring\. ARN: `arn:aws:apprunner:region:account-id:service/service-name[/service-id]`  | 
 |  Connection  |  Provides your App Runner services with access to private repositories stored with third\-party providers\. Exists as a separate resource for sharing across multiple services\. For more information about connections, see [Managing App Runner connections](manage-connections.md)\. ARN: `arn:aws:apprunner:region:account-id:connection/connection-name[/connection-id]`  | 
 |  AutoScalingConfiguration  |  Provides your App Runner services with settings that control the automatic scaling of your application\. Exists as a separate resource for sharing across multiple services\. For more information about automatic scaling, see [Managing App Runner automatic scaling](manage-autoscaling.md)\. ARN: `arn:aws:apprunner:region:account-id:autoscalingconfiguration/config-name[/config-revision[/config-id]]`  | 
+|  VpcConnector  |  Configures VPC settings for your App Runner services\. Exists as a separate resource for sharing across multiple services\. For more information about VPC functionality, see [Enabling VPC access for your service](network-vpc.md)\. ARN: `arn:aws:apprunner:region:account-id:vpcconnector/connector-name[/connector-revision[/connector-id]]`  | 
 
 ## App Runner resource quotas<a name="architecture.quotas"></a>
 
 AWS imposes some quotas \(also known as limits\) on your account for AWS resource usage in each AWS Region\. The following table lists quotas related to App Runner resources\. Quotas are also listed in [AWS App Runner endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/apprunner.html) in the *AWS General Reference*\.
 
-
-|  **Resource quota**  |  **Description**  |  **Default value**  |  **Adjustable?**  | 
-| --- | --- | --- | --- | 
-|  Services  |  The maximum number of services that you can create in your account for each AWS Region\.  |  10  |   ✓ Yes  | 
-|  Connections  |  The maximum number of connections that you can create in your account for each AWS Region\. You can share a single connection across multiple services\.  |  10  |   ✓ Yes  | 
-|  Auto scaling configurations—names  |  The maximum number of unique names that you can have in auto scaling configurations that you create in your account for each AWS Region\. You can use an auto scaling configuration in multiple services\.  |  10  |   ✓ Yes  | 
-|  Auto scaling configurations—revisions for each name  |  The maximum number of auto scaling configuration revisions that you can create in your account for each AWS Region for each unique name\. You can use an auto scaling configuration revision in multiple services\.  |  10  |   ☓ No  | 
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/apprunner/latest/dg/architecture.html)
 
 Most quotas are adjustable, and you can request a quota increase for them\. For more information, see [Requesting a quota increase](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html) in the Service Quotas User Guide\.

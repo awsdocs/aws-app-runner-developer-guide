@@ -7,7 +7,7 @@ If you own a domain name, you can associate it to your App Runner service\. Afte
 **Note**  
 You can optionally include the `www` subdomain of your domain\. However, this is currently only supported in the API\. The App Runner console doesn't support it\.
 
-When you associate a custom domain with your service, App Runner provides you with a set of certificate validation records\. Add them to your Domain Name System \(DNS\) so that App Runner can validate that you own or control the domain\. In addition, add CNAME   records to your DNS to target the App Runner domain\. You need to add one record for the custom domain, and another for the `www` subdomain, if you chose this option\. Then wait for the custom domain status to become **Active** in the App Runner console\. This typically takes several minutes \(but might take 24\-48 hours\)\. At this point, your custom domain is validated, and App Runner starts routing traffic from this domain to your web application\.
+When you associate a custom domain with your service, App Runner provides you with a set of CNAME records to add to your Domain Name System \(DNS\)\. Add certificate validation records to your DNS so that App Runner can validate that you own or control the domain\. In addition, add DNS target records to your DNS to target the App Runner domain\. You need to add one record for the custom domain, and another for the `www` subdomain, if you chose this option\. Then wait for the custom domain status to become **Active** in the App Runner console\. This typically takes several minutes \(but might take 24\-48 hours\)\. At this point, your custom domain is validated, and App Runner starts routing traffic from this domain to your web application\.
 
 You can specify a domain to associate with your App Runner service in the following ways:
 + *A root domain* – For example, `example.com`\. You can optionally associate `www.example.com` too as part of the same operation\.
@@ -28,7 +28,12 @@ You can disassociate \(unlink\) a custom domain from your App Runner service\. W
 
 App Runner internally creates certificates that track domain validity\. They're stored in AWS Certificate Manager \(ACM\)\. App Runner doesn't delete these certificates for seven days after a domain is disassociated from your service or after the service is deleted\.
 
-## Manage custom domains using the App Runner console<a name="manage-custom-domains.console"></a>
+## Manage custom domains<a name="manage-custom-domains.manage"></a>
+
+Manage custom domains for your App Runner service using one of the following methods:
+
+------
+#### [ App Runner console ]
 
 **To associate \(link\) a custom domain using the App Runner console**
 
@@ -65,8 +70,11 @@ App Runner internally creates certificates that track domain validity\. They're 
 
 1. In the **Unlink domain** dialog, verify the action by choosing **Unlink domain**\.
 
-## Manage custom domains using the App Runner API or AWS CLI<a name="manage-custom-domains.api"></a>
+------
+#### [ App Runner API or AWS CLI ]
 
 To associate a custom domain with your service using the App Runner API or AWS CLI, call the [AssociateCustomDomain](https://docs.aws.amazon.com/apprunner/latest/api/API_AssociateCustomDomain.html) API action\. When the call succeeds, it returns a [CustomDomain](https://docs.aws.amazon.com/apprunner/latest/api/API_CustomDomain.html) object that describes the custom domain that's being associated with your service\. The object should show a status of `CREATING`, and contains a list of [CertificateValidationRecord](https://docs.aws.amazon.com/apprunner/latest/api/API_CertificateValidationRecord.html) objects\. These are records you can add to your DNS\.
 
 To disassociate a custom domain from your service using the App Runner API or AWS CLI, call the [DisassociateCustomDomain](https://docs.aws.amazon.com/apprunner/latest/api/API_DisassociateCustomDomain.html) API action\. When the call succeeds, it returns a [CustomDomain](https://docs.aws.amazon.com/apprunner/latest/api/API_CustomDomain.html) object that describes the custom domain that's being disassociated from your service\. The object should show a status of `DELETING`\.
+
+------

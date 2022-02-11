@@ -2,7 +2,12 @@
 
 AWS App Runner uses a list of operations to keep track of activity in your App Runner service\. An operation represents an asynchronous call to an API action, such as creating a service, updating a configuration, and deploying a service\. The following sections show you how to track activity in the App Runner console and using the API\.
 
-## Tracking App Runner service activity in the console<a name="monitor-activity.console"></a>
+## Track App Runner service activity<a name="monitor-activity.monitor"></a>
+
+Track your App Runner service activity using one of the following methods:
+
+------
+#### [ App Runner console ]
 
 The App Runner console displays your App Runner service activity and provides more ways to explore operations\.
 
@@ -23,6 +28,9 @@ The App Runner console displays your App Runner service activity and provides mo
 
 1. Choose any listed operation to see or download the related log\.
 
-## Retrieving App Runner service operations using the App Runner API or AWS CLI<a name="monitor-activity.api"></a>
+------
+#### [ App Runner API or AWS CLI ]
 
 The [ListOperations](https://docs.aws.amazon.com/apprunner/latest/api/API_ListOperations.html) action, given the Amazon Resource Name \(ARN\) of an App Runner service, returns a list of operations that occurred on this service\. Each list item contains an operation ID and some tracking details\.
+
+------

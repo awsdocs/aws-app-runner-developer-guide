@@ -157,10 +157,16 @@ For examples of user policies, see [User policies](security_iam_id-based-policy-
     {
       "Effect": "Allow",
       "Action": "iam:CreateServiceLinkedRole",
-      "Resource": "arn:aws:iam::*:role/aws-service-role/apprunner.amazonaws.com/AWSServiceRoleForAppRunner",
+      "Resource": [
+        "arn:aws:iam::*:role/aws-service-role/apprunner.amazonaws.com/AWSServiceRoleForAppRunner",
+        "arn:aws:iam::*:role/aws-service-role/apprunner.amazonaws.com/AWSServiceRoleForAppRunnerNetworking"
+      ],
       "Condition": {
         "StringLike": {
-          "iam:AWSServiceName": "apprunner.amazonaws.com"
+          "iam:AWSServiceName": [
+            "apprunner.amazonaws.com",
+            "networking.apprunner.amazonaws.com"
+          ]
         }
       }
     },
@@ -173,14 +179,6 @@ For examples of user policies, see [User policies](security_iam_id-based-policy-
           "iam:PassedToService": "apprunner.amazonaws.com"
         }
       }
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "kms:DescribeKey",
-        "kms:CreateGrant"
-      ],
-      "Resource": "*"
     },
     {
       "Sid": "AppRunnerAdminAccess",
@@ -210,7 +208,7 @@ App Runner supports a few service roles\.
 
 #### Access role<a name="security_iam_service-with-iam-roles-service.access"></a>
 
-The access role is a role that App Runner uses for accessing images in Amazon Elastic Container Registry \(Amazon ECR\) in your account\. It's required to access an image in Amazon ECR, and isn't required with Amazon ECR Public\. Before creating a service based on an image in Amazon ECR, use IAM to create a service role and use the `AWSAppRunnerServicePolicyForECRAccess` managed policy in it\. You can then pass this role to App Runner when calling the [CreateService](https://docs.aws.amazon.com/apprunner/latest/api/API_CreateService.html) API in the [AuthenticationConfiguration](https://docs.aws.amazon.com/apprunner/latest/api/API_AuthenticationConfiguration.html) structure \(a member of the [SourceConfiguration](https://docs.aws.amazon.com/apprunner/latest/api/API_SourceConfiguration.html) parameter\), or when using the App Runner console to create a service\.
+The access role is a role that App Runner uses for accessing images in Amazon Elastic Container Registry \(Amazon ECR\) in your account\. It's required to access an image in Amazon ECR, and isn't required with Amazon ECR Public\. Before creating a service based on an image in Amazon ECR, use IAM to create a service role and use the `AWSAppRunnerServicePolicyForECRAccess` managed policy in it\. You can then pass this role to App Runner when you call the [CreateService](https://docs.aws.amazon.com/apprunner/latest/api/API_CreateService.html) API in the [AuthenticationConfiguration](https://docs.aws.amazon.com/apprunner/latest/api/API_AuthenticationConfiguration.html) member of the [SourceConfiguration](https://docs.aws.amazon.com/apprunner/latest/api/API_SourceConfiguration.html) parameter, or when you use the App Runner console to create a service\.
 
 ##### AWSAppRunnerServicePolicyForECRAccess<a name="security_iam_service-with-iam-roles-service.access.policy"></a>
 
@@ -259,7 +257,9 @@ If you use the App Runner console to create a service, the console can automatic
 
 #### Instance role<a name="security_iam_service-with-iam-roles-service.instance"></a>
 
-The instance role is an optional role that App Runner uses to provide permissions to AWS service actions that your application code calls\. Before creating an App Runner service, use IAM to create a service role with the permissions that your application code needs\. You can then pass this role to App Runner in the [CreateService](https://docs.aws.amazon.com/apprunner/latest/api/API_CreateService.html) API, or when using the App Runner console to create a service\.
+The instance role is an optional role that App Runner uses to provide permissions to AWS service actions that your service's compute instances need\. You need to provide an instance role to App Runner if your application code calls AWS actions \(APIs\)\. Either embed the required permissions in your instance role or create your own custom policy and use it in the instance role\. We have no way to anticipate which calls your code uses\. Therefore, we don't provide a managed policy for this purpose\.
+
+Before creating an App Runner service, use IAM to create a service role with the required custom or embedded policies\. You can then pass this role to App Runner as the instance role when you call the [CreateService](https://docs.aws.amazon.com/apprunner/latest/api/API_CreateService.html) API in the [InstanceRoleArn](https://docs.aws.amazon.com/apprunner/latest/api/API_InstanceRoleArn.html) member of the [InstanceConfiguration](https://docs.aws.amazon.com/apprunner/latest/api/API_InstanceConfiguration.html) parameter, or when you use the App Runner console to create a service\.
 
 When you create your instance role, be sure to add a trust policy that declares the App Runner service principal `tasks.apprunner.amazonaws.com` as a trusted entity\.
 
@@ -283,7 +283,3 @@ When you create your instance role, be sure to add a trust policy that declares 
 If you use the App Runner console to create a service, the console lists the roles in your account, and you can select the role that you created for this purpose\.
 
 For information about creating a service, see [Creating an App Runner service](manage-create.md)\.
-
-**Note**  
-The permissions that the instance role should provide depend entirely on your application\. Your code might not call any AWS APIs, and in this case you don't need to provide an instance role to App Runner\.  
-In case your code does call AWS APIs, we have no way to anticipate which calls they are\. Therefore, we don't provide a managed policy for instance roles\. You must explicitly include the required permissions in your instance role, or create your own custom policy and use it in the instance role\.

@@ -14,13 +14,12 @@ You can configure a few settings related to health checks\. The following table 
 |  Healthy threshold  |  The number of consecutive checks that must succeed before App Runner decides that the service is healthy\.  |  `1`  | 
 |  Unhealthy threshold  |  The number of consecutive checks that must fail before App Runner decides that the service is unhealthy\.  |  `5`  | 
 
-## Configure health checks using the App Runner API or AWS CLI<a name="manage-configure-healthcheck.api"></a>
+## Configure health checks<a name="manage-configure-healthcheck.configure"></a>
 
-When you call the [CreateService](https://docs.aws.amazon.com/apprunner/latest/api/API_CreateService.html) or [UpdateService](https://docs.aws.amazon.com/apprunner/latest/api/API_UpdateService.html) API actions, you can use the `HealthCheckConfiguration` parameter to specify health check settings\.
+Configure health checks for your App Runner service using one of the following methods:
 
-For information about the parameter's structure, see [HealthCheckConfiguration](https://docs.aws.amazon.com/apprunner/latest/api/API_HealthCheckConfiguration.html) in the *AWS App Runner API Reference*\.
-
-## Configure health checks using the App Runner console<a name="manage-configure-healthcheck.console"></a>
+------
+#### [ App Runner console ]
 
 When you create your App Runner service using the App Runner console, or when you update its configuration later, you can configure health check settings\. For full console procedures, see [Creating an App Runner service](manage-create.md) and [Configuring an App Runner service](manage-configure.md)\. In both cases, look for the **Health check** configuration section on the console page\.
 
@@ -28,3 +27,12 @@ When you create your App Runner service using the App Runner console, or when yo
 
 **Note**  
 When you use the App Runner console, you can configure only TCP health checks\. Use App Runner API or AWS CLI for the complete health check options\.
+
+------
+#### [ App Runner API or AWS CLI ]
+
+When you call the [CreateService](https://docs.aws.amazon.com/apprunner/latest/api/API_CreateService.html) or [UpdateService](https://docs.aws.amazon.com/apprunner/latest/api/API_UpdateService.html) API actions, you can use the `HealthCheckConfiguration` parameter to specify health check settings\.
+
+For information about the parameter's structure, see [HealthCheckConfiguration](https://docs.aws.amazon.com/apprunner/latest/api/API_HealthCheckConfiguration.html) in the *AWS App Runner API Reference*\.
+
+------

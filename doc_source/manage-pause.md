@@ -34,7 +34,12 @@ The following lists provide information about API actions that you can and canno
 + *`CreateCustomDomainAssociations`, `DeleteCustomDomainAssociations`*
 + *`CreateConnection`, `DeleteConnection`*
 
-## Pause and resume your service using the App Runner console<a name="manage-pause.console"></a>
+## Pause and resume your service<a name="manage-pause.manage"></a>
+
+Pause and resume your App Runner service using one of the following methods:
+
+------
+#### [ App Runner console ]
 
 **To pause your service using the App Runner console**
 
@@ -59,8 +64,11 @@ The following lists provide information about API actions that you can and canno
 
 1. To verify that resuming the service is successful, on the service dashboard page, choose the **App Runner domain** value\. It's the URL for your service's website\. Verify that your web application is running correctly\.
 
-## Pause and resume your service using the App Runner API or AWS CLI<a name="manage-pause.api"></a>
+------
+#### [ App Runner API or AWS CLI ]
 
 To pause your service using the App Runner API or AWS CLI, call the [PauseService](https://docs.aws.amazon.com/apprunner/latest/api/API_PauseService.html) API action\. If the call returns a successful response with a [Service](https://docs.aws.amazon.com/apprunner/latest/api/API_Service.html) object showing `"Status": "OPERATION_IN_PROGRESS"`, App Runner starts pausing your service\.
 
 To resume your service using the App Runner API or AWS CLI, call the [ResumeService](https://docs.aws.amazon.com/apprunner/latest/api/API_ResumeService.html) API action\. If the call returns a successful response with a [Service](https://docs.aws.amazon.com/apprunner/latest/api/API_Service.html) object showing `"Status": "OPERATION_IN_PROGRESS"`, App Runner starts resuming your service\.
+
+------

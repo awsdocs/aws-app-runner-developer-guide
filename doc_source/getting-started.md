@@ -256,7 +256,7 @@ Now that you've deployed your first App Runner service, learn more in the follow
 + [Image\-based service](service-source-image.md) and [Code\-based service](service-source-code.md) – The two types of application source that App Runner can deploy\.
 + [Developing application code for App Runner](develop.md) – Things you should know when developing or migrating application code for deployment to App Runner\.
 + [Using the App Runner console](console.md) – Manage and monitor your service using the App Runner console\.
-+ [Managing your App Runner service lifecycle](manage.md) – Manage the lifecycle of your App Runner service\.
++ [Managing your App Runner service](manage.md) – Manage the lifecycle of your App Runner service\.
 + [Logging and monitoring for your App Runner service](monitor.md) – Monitor your App Runner service by viewing metrics, reading logs, and tracking service action calls\.
 + [App Runner configuration file](config-file.md) – A configuration\-based way to specify options for the build and runtime behavior of your App Runner service\.
 + [The App Runner API](api.md) – Use the App Runner application programming interface \(API\) to create, read, update, and delete App Runner resources\.

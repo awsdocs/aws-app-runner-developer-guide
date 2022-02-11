@@ -17,17 +17,25 @@ The following is some important information about auto scaling configurations:
 + **Shared** – You can share a single auto scaling configuration resource across multiple App Runner services\. This is useful if they have similar scaling requirements\. In particular, you can configure multiple services to all use the latest version of a configuration by specifying the configuration name but not specifying a revision\. By doing this, any of the services that you configured this way receives auto scaling configuration updates when you update the service\. For more information about configuration changes, see [Configuring an App Runner service](manage-configure.md)\.
 + **Resource management** – You can use App Runner to create and delete auto scaling configurations\. You can't directly update a configuration\. Instead, you can create a new revision to an existing configuration name to effectively update the configuration\.
 **Note**  
-At this time, you can only create a configuration with a single revision in the App Runner console\. To create more revisions, and to delete configurations, use the App Runner [API](#manage-autoscaling.api)\.
-+ **Resource quota** – There are set quotas for the number of unique configuration names and revisions that you can have for your auto scaling configuration resources in each AWS Region\. If you reach these quotas, you must either delete a configuration name or at least some of its revisions before you can create more\. Use the App Runner [API](#manage-autoscaling.api) to delete them\. For more information, see [App Runner resource quotas](architecture.md#architecture.quotas)\.
+At this time, you can only create a configuration with a single revision in the App Runner console\. To create more revisions, and to delete configurations, use the App Runner API as described in the following section, [Manage auto scaling](#manage-autoscaling.manage)\.
++ **Resource quota** – There are set quotas for the number of unique configuration names and revisions that you can have for your auto scaling configuration resources in each AWS Region\. If you reach these quotas, you must either delete a configuration name or at least some of its revisions before you can create more\. Use the App Runner API to delete them\. For more information, see [App Runner resource quotas](architecture.md#architecture.quotas)\.
 
-## Manage auto scaling using the App Runner console<a name="manage-autoscaling.console"></a>
+## Manage auto scaling<a name="manage-autoscaling.manage"></a>
+
+Manage auto scaling for your App Runner services using one of the following methods:
+
+------
+#### [ App Runner console ]
 
 When you [create a service](manage-create.md) in the App Runner console, you can use the default auto scaling configuration or a custom configuration\. To use a custom configuration, either choose an existing configuration or provide a new name and settings\. If it's a new configuration, App Runner creates a new auto scaling configuration resource for you, and then associates it with your new service\.
 
-## Manage auto scaling using the App Runner API or AWS CLI<a name="manage-autoscaling.api"></a>
+------
+#### [ App Runner API or AWS CLI ]
 
 You can use the following App Runner API actions to manage your auto scaling configurations\.
 + [CreateAutoScalingConfiguration](https://docs.aws.amazon.com/apprunner/latest/api/API_CreateAutoScalingConfiguration.html) – Creates a new auto scaling configuration or a revision to an existing one\.
 + [ListAutoScalingConfigurations](https://docs.aws.amazon.com/apprunner/latest/api/API_ListAutoScalingConfigurations.html) – Returns a list of the auto scaling configurations that are associated with your AWS account, with summary information\.
 + [DescribeAutoScalingConfiguration](https://docs.aws.amazon.com/apprunner/latest/api/API_DescribeAutoScalingConfiguration.html) – Returns a full description of an auto scaling configuration\.
 + [DeleteAutoScalingConfiguration](https://docs.aws.amazon.com/apprunner/latest/api/API_DeleteAutoScalingConfiguration.html) – Deletes an auto scaling configuration\. You can delete a specific revision or the latest active revision\. You might need to delete unnecessary auto scaling configurations if you reach the auto scaling configuration quota for your AWS account\.
+
+------
