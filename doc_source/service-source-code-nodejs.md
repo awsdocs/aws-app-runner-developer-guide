@@ -1,12 +1,20 @@
-# Using the Node\.js managed runtime<a name="service-source-code-nodejs"></a>
+# Using the Node\.js platform<a name="service-source-code-nodejs"></a>
 
-AWS App Runner provides a Node\.js managed runtime\. The runtime makes it easy to build and run containers with Node\.js\-based web applications\. When you use the Node\.js runtime, App Runner starts with a managed Node\.js runtime image\. This image is based on the [Amazon Linux Docker image](https://hub.docker.com/_/amazonlinux) and contains the Node\.js runtime package and some tools\. App Runner uses this managed runtime image as a base image, and adds your application code to build a Docker image\. It then deploys this image to run your web service in a container\.
+The AWS App Runner Node\.js platform provides managed runtimes\. Each runtime makes it easy to build and run containers with web applications based on a Node\.js version\. When you use a Node\.js runtime, App Runner starts with a managed Node\.js runtime image\. This image is based on the [Amazon Linux Docker image](https://hub.docker.com/_/amazonlinux) and contains the runtime package for a version of Node\.js and some tools\. App Runner uses this managed runtime image as a base image, and adds your application code to build a Docker image\. It then deploys this image to run your web service in a container\.
 
  You specify a runtime for your App Runner service when you [create a service](manage-create.md) using the App Runner console or the [CreateService](https://docs.aws.amazon.com/apprunner/latest/api/API_CreateService.html) API\. You can also specify a runtime as part of your source code\. Use the `runtime` keyword in a [App Runner configuration file](config-file.md) that you include in your code repository\. The naming convention of a managed runtime is *<language\-name><major\-version>*\. 
 
 For valid Node\.js runtime names, see [Node\.js runtime release information](service-source-code-nodejs-releases.md)\.
 
-App Runner updates the runtime for your service to the latest version on every deployment or service update\. If your application requires a specific version of a managed runtime, you can specify it using the `runtime-version` keyword in the [App Runner configuration file](config-file.md)\. Specify a minor version as *<major>*\.*<minor>* to lock the major and minor versions \(App Runner updates only patch versions\)\. Specify a particular patch level as *<major>*\.*<minor>*\.*<patch>* to lock your service on a specific runtime version \(App Runner never updates the runtime\)\.
+App Runner updates the runtime for your service to the latest version on every deployment or service update\. If your application requires a specific version of a managed runtime, you can specify it using the `runtime-version` keyword in the [App Runner configuration file](config-file.md)\. You can lock to any level of version \(for example, major or minor\), and App Runner only makes lower\-level updates to the runtime of your service\.
+
+Version syntax for Node\.js runtimes: `major[.minor[.patch]]`
+
+For example: `12.22.6`
+
+The following examples demonstrate version locking:
++ `12.22` – Lock the major and minor versions\. App Runner updates only patch versions\.
++ `12.22.3` – Lock to a specific patch version\. App Runner doesn't update your runtime version\.
 
 **Topics**
 + [Node\.js runtime configuration](#service-source-code-nodejs.config)
@@ -22,7 +30,7 @@ When you choose a managed runtime, you must also configure, as a minimum, build 
 
 Providing a configuration file is optional\. When creating an App Runner service using the console or the API, you specify if App Runner gets your configuration settings directly during creation or from a configuration file\.
 
-With the Node\.js runtime specifically, you can also configure the build and runtime using a JSON file named `package.json` in the root of your source repository\. Using this file, you can configure the Node\.js engine version, dependency packages, and various commands \(command line applications\)\. Package managers such as npm or yarn interpret this file as input for their commands\.
+With Node\.js runtimes specifically, you can also configure the build and runtime using a JSON file named `package.json` in the root of your source repository\. Using this file, you can configure the Node\.js engine version, dependency packages, and various commands \(command line applications\)\. Package managers such as npm or yarn interpret this file as input for their commands\.
 
 For example:
 + npm install installs packages defined by the `dependencies` and `devDependencies` node in `package.json`\.
@@ -86,7 +94,7 @@ The following examples show App Runner configuration files for building and runn
 
 ### Minimal Node\.js configuration file<a name="service-source-code-nodejs.examples.minimal"></a>
 
-This example shows a minimal configuration file that you can use with the Node\.js managed runtime\. For the assumptions that App Runner makes with a minimal configuration file, see [Configuration file examples](config-file-examples.md#config-file-examples.managed)\.
+This example shows a minimal configuration file that you can use with a Node\.js managed runtime\. For the assumptions that App Runner makes with a minimal configuration file, see [Configuration file examples](config-file-examples.md#config-file-examples.managed)\.
 
 **Example apprunner\.yaml**  
 
@@ -103,7 +111,7 @@ run:
 
 ### Extended Node\.js configuration file<a name="service-source-code-nodejs.examples.extended"></a>
 
-This example shows the use of all the configuration keys with the Node\.js managed runtime\.
+This example shows the use of all the configuration keys with a Node\.js managed runtime\.
 
 **Example apprunner\.yaml**  
 

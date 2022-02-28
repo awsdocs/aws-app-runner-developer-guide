@@ -4,17 +4,18 @@ You can use AWS App Runner to create and manage services based on two fundamenta
 
 This chapter discusses services based on source code\. For information about services based on a source image, see [App Runner service based on a source image](service-source-image.md)\.
 
-Source code is application code that App Runner builds and deploys for you\. You point App Runner to a source code repository and choose a suitable *runtime*\. App Runner builds an image that's based on the base image of the runtime and your application code\. It then starts a service that runs a container based on this image\.
+Source code is application code that App Runner builds and deploys for you\. You point App Runner to a source code repository and choose a suitable *runtime* that corresponds to a programming platform version\. App Runner builds an image that's based on the base image of the runtime and your application code\. It then starts a service that runs a container based on this image\.
 
-App Runner provides convenient language\-specific *managed runtimes*\. Each one of these runtimes builds a container image from your source code, and adds language runtime dependencies into your image\. You don't need to provide container configuration and build instructions such as a Dockerfile\.
+App Runner provides convenient platform\-specific *managed runtimes*\. Each one of these runtimes builds a container image from your source code, and adds language runtime dependencies into your image\. You don't need to provide container configuration and build instructions such as a Dockerfile\.
 
-Subtopics of this chapter discuss the various *runtimes* that App Runner supports—the generic Dockerfile runtime, and the *managed runtimes* for different programming environments\.
+Subtopics of this chapter discuss the various platforms that App Runner supports— *managed platforms* that provide managed runtimes for different programming environments and versions\.
 
 **Topics**
 + [Source code repository providers](#service-source-code.providers)
-+ [App Runner managed runtimes](#service-source-code.managed-runtimes)
-+ [Using the Python managed runtime](service-source-code-python.md)
-+ [Using the Node\.js managed runtime](service-source-code-nodejs.md)
++ [App Runner managed platforms](#service-source-code.managed-platforms)
++ [Using the Python platform](service-source-code-python.md)
++ [Using the Node\.js platform](service-source-code-nodejs.md)
++ [Using the Java platform](service-source-code-java.md)
 
 ## Source code repository providers<a name="service-source-code.providers"></a>
 
@@ -28,10 +29,10 @@ When you use the App Runner API or the AWS CLI, a connection is a separate resou
 
 For more information about App Runner service creation, see [Creating an App Runner service](manage-create.md)\. For more information about App Runner connections, see [Managing App Runner connections](manage-connections.md)\.
 
-## App Runner managed runtimes<a name="service-source-code.managed-runtimes"></a>
+## App Runner managed platforms<a name="service-source-code.managed-platforms"></a>
 
-App Runner provides managed runtimes for various programming environments\. Each managed runtime makes it easy to build and run containers based on a particular programming language or runtime environment\. When you use a managed runtime, App Runner starts with a managed runtime image\. This image is based on the [Amazon Linux Docker image](https://hub.docker.com/_/amazonlinux) and contains a language runtime package as well as some tools and popular dependency packages\. App Runner uses this managed runtime image as a base image, and adds your application code to build a Docker image\. It then deploys this image to run your web service in a container\.
+App Runner managed platforms provide managed runtimes for various programming environments\. Each managed runtime makes it easy to build and run containers based on a version of a programming language or runtime environment\. When you use a managed runtime, App Runner starts with a managed runtime image\. This image is based on the [Amazon Linux Docker image](https://hub.docker.com/_/amazonlinux) and contains a language runtime package as well as some tools and popular dependency packages\. App Runner uses this managed runtime image as a base image, and adds your application code to build a Docker image\. It then deploys this image to run your web service in a container\.
 
  You specify a runtime for your App Runner service when you [create a service](manage-create.md) using the App Runner console or the [CreateService](https://docs.aws.amazon.com/apprunner/latest/api/API_CreateService.html) API\. You can also specify a runtime as part of your source code\. Use the `runtime` keyword in a [App Runner configuration file](config-file.md) that you include in your code repository\. The naming convention of a managed runtime is *<language\-name><major\-version>*\. 
 
-App Runner updates the runtime for your service to the latest version on every deployment or service update\. If your application requires a specific version of a managed runtime, you can specify it using the `runtime-version` keyword in the [App Runner configuration file](config-file.md)\. Specify a minor version as *<major>*\.*<minor>* to lock the major and minor versions \(App Runner updates only patch versions\)\. Specify a particular patch level as *<major>*\.*<minor>*\.*<patch>* to lock your service on a specific runtime version \(App Runner never updates the runtime\)\.
+App Runner updates the runtime for your service to the latest version on every deployment or service update\. If your application requires a specific version of a managed runtime, you can specify it using the `runtime-version` keyword in the [App Runner configuration file](config-file.md)\. You can lock to any level of version \(for example, major or minor\), and App Runner only makes lower\-level updates to the runtime of your service\.

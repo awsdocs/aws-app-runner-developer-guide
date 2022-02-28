@@ -2,7 +2,7 @@
 
 AWS App Runner takes your source code or source image from a repository, and creates and maintains a running web service for you in the AWS Cloud\. Typically, you need to call just one App Runner action, [CreateService](https://docs.aws.amazon.com/apprunner/latest/api/API_CreateService.html), to create your service\.
 
-With a source image repository, you provide a ready\-to\-use container image that App Runner can deploy to run your web service\. With a source code repository, you can provide code and instructions for building and running a web service designed for one of several runtime environments managed by App Runner\. 
+With a source image repository, you provide a ready\-to\-use container image that App Runner can deploy to run your web service\. With a source code repository, you provide your code and instructions for building and running a web service, and you target a specific runtime environment\. App Runner supports several programming platforms, each with one or more managed runtimes for platform major versions\. 
 
 At this time, App Runner can retrieve your source code from a [GitHub](https://github.com/) repository, or retrieve your source image from [Amazon Elastic Container Registry \(Amazon ECR\)](https://docs.aws.amazon.com/AmazonECR/latest/userguide/) in your AWS account\.
 
@@ -17,7 +17,7 @@ The following are key concepts related to your web service that's running in App
 + *Source type* – The type of source repository that you provide for deploying your App Runner service: [source code](service-source-code.md) or [source image](service-source-image.md)\.
 + *Repository provider* – The repository service that contains your application source \(for example, [GitHub](service-source-code.md#service-source-code.providers.github) or [Amazon ECR](service-source-image.md#service-source-image.providers.ecr)\)\.
 + *App Runner connection* – An AWS resource that lets App Runner access a repository provider account \(for example, a GitHub account or organization\)\. For more information about connections, see [Managing App Runner connections](manage-connections.md)\.
-+ *Runtime* – A base image for deploying a source code repository\. App Runner provides a variety of *managed runtimes* for different programming environments\. For more information, see [App Runner service based on source code](service-source-code.md)\.
++ *Runtime* – A base image for deploying a source code repository\. App Runner provides a variety of *managed runtimes* for different programming platforms and versions\.  For more information, see [App Runner service based on source code](service-source-code.md)\.
 + *Deployment* – An action that applies a version of your source repository \(code or image\) to an App Runner service\. The first deployment to the service occurs as part of service creation\. Later deployments can occur in one of two ways:
   + *Automatic deployment* – A CI/CD capability\. You can configure an App Runner service to automatically build \(for source code\) and deploy each version of your application as it appears in the repository\. This can be a new commit in a source code repository or a new image version in a source image repository\.
   + *Manual deployment* – A deployment to your App Runner service that you explicitly start\.

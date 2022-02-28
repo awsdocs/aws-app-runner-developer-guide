@@ -159,7 +159,7 @@ For examples of user policies, see [User policies](security_iam_id-based-policy-
       "Action": "iam:CreateServiceLinkedRole",
       "Resource": [
         "arn:aws:iam::*:role/aws-service-role/apprunner.amazonaws.com/AWSServiceRoleForAppRunner",
-        "arn:aws:iam::*:role/aws-service-role/apprunner.amazonaws.com/AWSServiceRoleForAppRunnerNetworking"
+        "arn:aws:iam::*:role/aws-service-role/networking.apprunner.amazonaws.com/AWSServiceRoleForAppRunnerNetworking"
       ],
       "Condition": {
         "StringLike": {

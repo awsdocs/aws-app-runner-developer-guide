@@ -31,9 +31,7 @@ The keys at the top of the file provide general information about the file and y
   ```
   version: 1.0
   ```
-+ `runtime` – *Required\.* The name of the runtime that your application uses\. The following runtimes are currently available:
-
-  `python3`, `nodejs12`
++ `runtime` – *Required\.* The name of the runtime that your application uses\. To learn about available runtimes for the different programming platforms that App Runner offers, see [App Runner service based on source code](service-source-code.md)\.
 **Note**  
  The naming convention of a managed runtime is *<language\-name><major\-version>*\. 
 
@@ -123,7 +121,9 @@ The section starts with the `run:` key, and has the following subkeys:
   ```
   run:
     runtime-version: major[.minor[.patch]]
-  ```  
+  ```
+**Note**  
+The runtimes of some platforms have different version components\. See specific platform topics for details\.  
 **Example**  
 
   ```

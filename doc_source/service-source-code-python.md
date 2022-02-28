@@ -1,12 +1,20 @@
-# Using the Python managed runtime<a name="service-source-code-python"></a>
+# Using the Python platform<a name="service-source-code-python"></a>
 
-AWS App Runner provides a Python managed runtime\. The runtime makes it easy to build and run containers with Python based web applications\. When you use the Python runtime, App Runner starts with a managed Python runtime image\. This image is based on the [Amazon Linux Docker image](https://hub.docker.com/_/amazonlinux) and contains the Python runtime package and some tools and popular dependency packages\. App Runner uses this managed runtime image as a base image, and adds your application code to build a Docker image\. It then deploys this image to run your web service in a container\.
+The AWS App Runner Python platform provides managed runtimes\. Each runtime makes it easy to build and run containers with web applications based on a Python version\. When you use a Python runtime, App Runner starts with a managed Python runtime image\. This image is based on the [Amazon Linux Docker image](https://hub.docker.com/_/amazonlinux) and contains the runtime package for a version of Python and some tools and popular dependency packages\. App Runner uses this managed runtime image as a base image, and adds your application code to build a Docker image\. It then deploys this image to run your web service in a container\.
 
  You specify a runtime for your App Runner service when you [create a service](manage-create.md) using the App Runner console or the [CreateService](https://docs.aws.amazon.com/apprunner/latest/api/API_CreateService.html) API\. You can also specify a runtime as part of your source code\. Use the `runtime` keyword in a [App Runner configuration file](config-file.md) that you include in your code repository\. The naming convention of a managed runtime is *<language\-name><major\-version>*\. 
 
 For valid Python runtime names, see [Python runtime release information](service-source-code-python-releases.md)\.
 
-App Runner updates the runtime for your service to the latest version on every deployment or service update\. If your application requires a specific version of a managed runtime, you can specify it using the `runtime-version` keyword in the [App Runner configuration file](config-file.md)\. Specify a minor version as *<major>*\.*<minor>* to lock the major and minor versions \(App Runner updates only patch versions\)\. Specify a particular patch level as *<major>*\.*<minor>*\.*<patch>* to lock your service on a specific runtime version \(App Runner never updates the runtime\)\.
+App Runner updates the runtime for your service to the latest version on every deployment or service update\. If your application requires a specific version of a managed runtime, you can specify it using the `runtime-version` keyword in the [App Runner configuration file](config-file.md)\. You can lock to any level of version \(for example, major or minor\), and App Runner only makes lower\-level updates to the runtime of your service\.
+
+Version syntax for Python runtimes: `major[.minor[.patch]]`
+
+For example: `3.8.5`
+
+The following examples demonstrate version locking:
++ `3.8` – Lock the major and minor versions\. App Runner updates only patch versions\.
++ `3.8.4` – Lock to a specific patch version\. App Runner doesn't update your runtime version\.
 
 **Topics**
 + [Python runtime configuration](#service-source-code-python.config)
@@ -28,7 +36,7 @@ The following examples show App Runner configuration files for building and runn
 
 ### Minimal Python configuration file<a name="service-source-code-python.examples.minimal"></a>
 
-This example shows a minimal configuration file that you can use with the Python managed runtime\. For the assumptions that App Runner makes with a minimal configuration file, see [Configuration file examples](config-file-examples.md#config-file-examples.managed)\.
+This example shows a minimal configuration file that you can use with a Python managed runtime\. For the assumptions that App Runner makes with a minimal configuration file, see [Configuration file examples](config-file-examples.md#config-file-examples.managed)\.
 
 **Example apprunner\.yaml**  
 
@@ -46,7 +54,7 @@ run:
 
 ### Extended Python configuration file<a name="service-source-code-python.examples.extended"></a>
 
-This example shows the use of all configuration keys with the Python managed runtime\.
+This example shows the use of all configuration keys with a Python managed runtime\.
 
 **Example apprunner\.yaml**  
 
@@ -78,7 +86,7 @@ run:
       value: "example"
 ```
 
-### End to end Python application source<a name="service-source-code-python.examples.end2end"></a>
+### Complete Python application source<a name="service-source-code-python.examples.end2end"></a>
 
 This example shows the source code for a complete Python application that you can deploy to a Python runtime service\.
 

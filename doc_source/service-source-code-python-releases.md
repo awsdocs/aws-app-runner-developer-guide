@@ -5,7 +5,7 @@ This topic lists the full details for the Python runtime versions that App Runne
 
 **Python 3**  
 
-|  **Detail**  |  **Description**  | 
+| **Detail** | **Description** | 
 | --- | --- | 
 |  Runtime name  |  python3  | 
 |  Minor versions  |  3\.7, 3\.8  | 
