@@ -85,7 +85,7 @@ apprunner\.yaml
   run:
     command: npm start
   ```
-When you run npm install in your development environment, npm creates the file `package-lock.json`\. This file contains a snapshot of the package versions npm just installed\. Thereafter, when npm installs dependencies, it uses these exact versions\. Similarly, yarn creates `yarn.json`\. Commit these files to your source code repository to ensure that your application is installed with the versions of dependencies that you developed and tested it with\.
+When you run npm install in your development environment, npm creates the file `package-lock.json`\. This file contains a snapshot of the package versions npm just installed\. Thereafter, when npm installs dependencies, it uses these exact versions\. Similarly, yarn creates `yarn.lock`\. Commit these files to your source code repository to ensure that your application is installed with the versions of dependencies that you developed and tested it with\.
 You can also use an App Runner configuration file to configure the Node\.js version and start command\. When you do this, these definitions override the ones in `package.json`\. A conflict between the `node` version in `package.json` and the `runtime-version` value in the App Runner configuration file causes the App Runner build phase to fail\.
 
 ## Node\.js runtime examples<a name="service-source-code-nodejs.examples"></a>
