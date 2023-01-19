@@ -57,7 +57,7 @@ These are some examples to events that App Runner sends to EventBridge\.
       "arn:aws:apprunner:us-east-2:123456789012:service/my-app/8fe1e10304f84fd2b0df550fe98a71fa"
     ],
     "detail": {
-      "Status": "UpdateServiceCompletedSuccessfully",
+      "operationStatus": "UpdateServiceCompletedSuccessfully",
       "ServiceName": "my-app",
       "ServiceId": "8fe1e10304f84fd2b0df550fe98a71fa",
       "Message": "Service update completed successfully. New application and configuration is deployed.",
@@ -89,7 +89,7 @@ The following examples demonstrate event patterns that you can use in EventBridg
     "source": [ "aws.apprunner" ],
     "account": [ "111122223333" ],
     "detail": {
-      "Status": [
+      "operationStatus": [
         "CreateServiceFailed",
         "DeleteServiceFailed",
         "UpdateServiceFailed",
