@@ -33,12 +33,12 @@ These are some examples to events that App Runner sends to EventBridge\.
       "arn:aws:apprunner:us-east-2:123456789012:service/my-app/8fe1e10304f84fd2b0df550fe98a71fa"
     ],
     "detail": {
-      "PreviousStatus": "OPERATION_IN_PROGRESS",
-      "CurrentStatus": "RUNNING",
-      "ServiceName": "my-app",
-      "ServiceId": "8fe1e10304f84fd2b0df550fe98a71fa",
-      "Message": "Service status is set to RUNNING.",
-      "Severity": "INFO"
+      "previousServiceStatus": "OPERATION_IN_PROGRESS",
+      "currentServiceStatus": "RUNNING",
+      "serviceName": "my-app",
+      "serviceId": "8fe1e10304f84fd2b0df550fe98a71fa",
+      "message": "Service status is set to RUNNING.",
+      "severity": "INFO"
     }
   }
   ```
@@ -57,11 +57,11 @@ These are some examples to events that App Runner sends to EventBridge\.
       "arn:aws:apprunner:us-east-2:123456789012:service/my-app/8fe1e10304f84fd2b0df550fe98a71fa"
     ],
     "detail": {
-      "Status": "UpdateServiceCompletedSuccessfully",
-      "ServiceName": "my-app",
-      "ServiceId": "8fe1e10304f84fd2b0df550fe98a71fa",
-      "Message": "Service update completed successfully. New application and configuration is deployed.",
-      "Severity": "INFO"
+      "operationStatus": "UpdateServiceCompletedSuccessfully",
+      "serviceName": "my-app",
+      "serviceId": "8fe1e10304f84fd2b0df550fe98a71fa",
+      "message": "Service update completed successfully. New application and configuration is deployed.",
+      "severity": "INFO"
     }
   }
   ```
@@ -77,7 +77,7 @@ The following examples demonstrate event patterns that you can use in EventBridg
     "source": [ "aws.apprunner" ],
     "account": [ "111122223333" ],
     "detail": {
-      "PreviousStatus": [ "RUNNING" ]
+      "previousServiceStatus": [ "RUNNING" ]
     }
   }
   ```
@@ -89,7 +89,7 @@ The following examples demonstrate event patterns that you can use in EventBridg
     "source": [ "aws.apprunner" ],
     "account": [ "111122223333" ],
     "detail": {
-      "Status": [
+      "operationStatus": [
         "CreateServiceFailed",
         "DeleteServiceFailed",
         "UpdateServiceFailed",
@@ -108,12 +108,12 @@ The following examples demonstrate event patterns that you can use in EventBridg
 A service status change event has `detail-type` set to `AppRunner Service Status Change`\. It has the following detail fields and values:
 
 ```
-"PreviousStatus": "any valid service status",
-"CurrentStatus": "any valid service status",
-"ServiceName": "your service name",
-"ServiceId": "your service ID",
-"Message": "Service status is set to CurrentStatus.",
-"Severity": "varies"
+"previousStatus": "any valid service status",
+"currentStatus": "any valid service status",
+"serviceName": "your service name",
+"serviceId": "your service ID",
+"message": "Service status is set to CurrentStatus.",
+"severity": "varies"
 ```
 
 ### Operation status change<a name="monitor-ev.ref.operation"></a>
@@ -121,11 +121,11 @@ A service status change event has `detail-type` set to `AppRunner Service Status
 An operation status change event has `detail-type` set to `AppRunner Service Operation Status Change`\. It has the following detail fields and values:
 
 ```
-"Status": "see following table",
-"ServiceName": "your service name",
-"ServiceId": "your service ID",
-"Message": "see following table",
-"Severity": "varies"
+"operationStatus": "see following table",
+"serviceName": "your service name",
+"serviceId": "your service ID",
+"message": "see following table",
+"severity": "varies"
 ```
 
 The following table lists all possible status codes and related messages\.
